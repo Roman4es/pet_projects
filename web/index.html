@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Опрос компании</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <section id="welcome" class="section is-active">
+        <h1>Опрос компании</h1>
+        <p id="welcome-text">Вставьте приветственный текст здесь.</p>
+        <div class="field">
+          <label for="participant-name">Ваше имя</label>
+          <input id="participant-name" type="text" maxlength="144" />
+        </div>
+        <button id="start-btn" type="button">Начать</button>
+        <p class="muted">После нажатия начнется отсчет 25 минут.</p>
+      </section>
+
+      <section id="survey" class="section">
+        <h1>Форма опроса</h1>
+        <p class="muted" id="participant-greeting"></p>
+        <div class="timer" id="timer">Осталось: 25:00</div>
+        <form id="survey-form" autocomplete="off"></form>
+        <div class="actions">
+          <button id="finish-btn" type="button" class="secondary">
+            Завершить опрос
+          </button>
+        </div>
+      </section>
+
+      <section id="end" class="section">
+        <h1>Спасибо!</h1>
+        <p id="end-message">Опрос завершен.</p>
+        <p class="muted" id="save-status"></p>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
