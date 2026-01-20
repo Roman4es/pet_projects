@@ -35,7 +35,6 @@ const endSection = document.getElementById("end");
 const startBtn = document.getElementById("start-btn");
 const finishBtn = document.getElementById("finish-btn");
 const nameInput = document.getElementById("participant-name");
-const nameError = document.getElementById("name-error");
 const greeting = document.getElementById("participant-greeting");
 const timerEl = document.getElementById("timer");
 const formEl = document.getElementById("survey-form");
@@ -153,16 +152,10 @@ function finishSurvey(status) {
 }
 
 function startSurvey() {
-  const name = nameInput.value.trim();
-  if (!name) {
-    nameError.classList.remove("hidden");
-    nameInput.focus();
-    return;
-  }
-  nameError.classList.add("hidden");
   welcomeSection.classList.remove("is-active");
   surveySection.classList.add("is-active");
-  greeting.textContent = `РЈС‡Р°СЃС‚РЅРёРє: ${name}`;
+  const name = nameInput.value.trim();
+  greeting.textContent = name ? `РЈС‡Р°СЃС‚РЅРёРє: ${name}` : "";
   startedAt = new Date().toISOString();
   updateTimer();
 
@@ -178,13 +171,5 @@ function startSurvey() {
 }
 
 renderQuestions();
-startBtn.disabled = !nameInput.value.trim();
 startBtn.addEventListener("click", startSurvey);
 finishBtn.addEventListener("click", () => finishSurvey("manual"));
-nameInput.addEventListener("input", () => {
-  const hasName = Boolean(nameInput.value.trim());
-  startBtn.disabled = !hasName;
-  if (hasName) {
-    nameError.classList.add("hidden");
-  }
-});

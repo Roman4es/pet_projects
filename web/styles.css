@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   color-scheme: light;
   --text: #1b1b1b;
   --muted: #6a5f57;
@@ -136,16 +136,6 @@ button:disabled {
 
 .actions {
   margin-top: 24px;
-}
-
-.error {
-  color: var(--accent-red);
-  font-size: 13px;
-  margin: 6px 0 0;
-}
-
-.hidden {
-  display: none;
 }
 
 .welcome-text ol {
