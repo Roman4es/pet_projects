@@ -1,10 +1,12 @@
 :root {
   color-scheme: light;
-  --text: #111;
-  --muted: #666;
-  --border: #ddd;
-  --bg: #fff;
+  --text: #1b1b1b;
+  --muted: #6a5f57;
+  --border: #e2d6cc;
+  --bg: #f7f1eb;
+  --panel: #fff8f1;
   --accent: #111;
+  --accent-red: #b11226;
 }
 
 * {
@@ -15,7 +17,7 @@ body {
   margin: 0;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background: linear-gradient(160deg, #f9f2ea 0%, #f4ece4 100%);
 }
 
 .wrap {
@@ -46,6 +48,11 @@ p {
 
 .section.is-active {
   display: block;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 18px 36px rgba(36, 28, 22, 0.08);
 }
 
 .field {
@@ -64,29 +71,37 @@ input[type="text"] {
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 15px;
-  background: #fff;
+  background: #fffdfb;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="text"]:disabled {
-  background: #f5f5f5;
+  background: #f0e7df;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(177, 18, 38, 0.12);
 }
 
 button {
   appearance: none;
-  border: 1px solid var(--accent);
-  background: var(--accent);
+  border: 1px solid var(--accent-red);
+  background: var(--accent-red);
   color: #fff;
   padding: 10px 16px;
   border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button-link {
   display: inline-block;
   text-decoration: none;
-  border: 1px solid var(--accent);
-  background: var(--accent);
+  border: 1px solid var(--accent-red);
+  background: var(--accent-red);
   color: #fff;
   padding: 10px 16px;
   border-radius: 6px;
@@ -96,6 +111,7 @@ button {
 button.secondary {
   background: transparent;
   color: var(--accent);
+  border-color: var(--accent);
 }
 
 button:disabled {
@@ -106,6 +122,7 @@ button:disabled {
 .timer {
   font-weight: 600;
   margin: 8px 0 24px;
+  color: var(--accent);
 }
 
 .question {
@@ -119,4 +136,13 @@ button:disabled {
 
 .actions {
   margin-top: 24px;
+}
+
+.welcome-text ol {
+  margin: 0 0 18px 18px;
+  padding: 0;
+}
+
+.welcome-text li {
+  margin-bottom: 10px;
 }

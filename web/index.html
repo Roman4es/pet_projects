@@ -10,19 +10,53 @@
     <main class="wrap">
       <section id="welcome" class="section is-active">
         <h1>Опрос компании</h1>
-        <p id="welcome-text">Вставьте приветственный текст здесь.</p>
+        <div id="welcome-text" class="welcome-text">
+          <p>Уважаемые коллеги,</p>
+          <p>
+            Вам необходимо ответить на 25 вопросов в течение 50 минут.
+            Пожалуйста, обратите внимание на следующие правила:
+          </p>
+          <ol>
+            <li>
+              <strong>Ответы:</strong>
+              Старайтесь быть краткими и лаконичными, четко отвечая на вопрос.
+              Если вы не знаете ответ, оставьте поле пустым и переходите к
+              следующему вопросу.
+            </li>
+            <li>
+              <strong>Стоимость вопросов:</strong>
+              Каждый вопрос имеет фиксированное количество баллов за правильный
+              ответ.
+            </li>
+            <li>
+              <strong>Суммирование баллов:</strong>
+              Правильные баллы суммируются, и каждый участник накапливает свои
+              индивидуальные баллы.
+            </li>
+            <li>
+              <strong>Итоговый результат:</strong>
+              По завершении викторины будет подсчитано общее количество баллов
+              для каждого участника.
+            </li>
+            <li>
+              <strong>Время:</strong>
+              У вас есть 50 минут на выполнение задания. Пожалуйста, следите за
+              временем.
+            </li>
+          </ol>
+        </div>
         <div class="field">
           <label for="participant-name">Ваше имя</label>
           <input id="participant-name" type="text" maxlength="144" />
         </div>
         <button id="start-btn" type="button">Начать</button>
-        <p class="muted">После нажатия начнется отсчет 25 минут.</p>
+        <p class="muted">После нажатия начнется отсчет 50 минут.</p>
       </section>
 
       <section id="survey" class="section">
         <h1>Форма опроса</h1>
         <p class="muted" id="participant-greeting"></p>
-        <div class="timer" id="timer">Осталось: 25:00</div>
+        <div class="timer" id="timer">Осталось: 50:00</div>
         <form id="survey-form" autocomplete="off"></form>
         <div class="actions">
           <button id="finish-btn" type="button" class="secondary">

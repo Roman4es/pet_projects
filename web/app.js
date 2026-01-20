@@ -26,7 +26,7 @@ const QUESTIONS = [
   "Сколько стоит самый дорогой пентхаус в Петербурге, расположившиймя в 17/33 Residence",
 ];
 
-const TOTAL_SECONDS = 25 * 60;
+const TOTAL_SECONDS = 50 * 60;
 const MAX_LENGTH = 144;
 
 const welcomeSection = document.getElementById("welcome");
