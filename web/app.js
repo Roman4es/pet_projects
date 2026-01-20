@@ -185,3 +185,4 @@ nameInput.addEventListener("input", () => {
     nameError.classList.add("hidden");
   }
 });
+
