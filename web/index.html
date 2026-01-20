@@ -47,7 +47,10 @@
         </div>
         <div class="field">
           <label for="participant-name">Ваше имя</label>
-          <input id="participant-name" type="text" maxlength="144" />
+          <input id="participant-name" type="text" maxlength="144" required />
+          <p id="name-error" class="error hidden">
+            Пожалуйста, введите имя, чтобы начать опрос.
+          </p>
         </div>
         <button id="start-btn" type="button">Начать</button>
         <p class="muted">После нажатия начнется отсчет 50 минут.</p>

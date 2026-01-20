@@ -138,6 +138,16 @@ button:disabled {
   margin-top: 24px;
 }
 
+.error {
+  color: var(--accent-red);
+  font-size: 13px;
+  margin: 6px 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
 .welcome-text ol {
   margin: 0 0 18px 18px;
   padding: 0;
