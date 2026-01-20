@@ -138,8 +138,8 @@ function showEnd(status) {
   endSection.classList.add("is-active");
   endMessage.textContent =
     status === "timeout"
-      ? "Время вышло, форма опроса закрыта."
-      : "Опрос завершен.";
+      ? "К сожалению, время вышло, форма опроса закрыта."
+      : "Опрос завершен. Спасибо за участие!";
 }
 
 function finishSurvey(status) {
@@ -176,3 +176,4 @@ function startSurvey() {
 renderQuestions();
 startBtn.addEventListener("click", startSurvey);
 finishBtn.addEventListener("click", () => finishSurvey("manual"));
+
