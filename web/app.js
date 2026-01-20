@@ -9,7 +9,7 @@ const QUESTIONS = [
   "Назовите День Рождения Компании",
   "Какой знаковый арт-объект разместился во дворе 1919?",
   "На каком этаже расположен Sky Lounge в Шепилевском?",
-  "Между какими башнями расположен небесный мост?",
+  "На каком этаже находится Небесный мост в Башнях?",
   "Какой объект Компании вам нравится больше всего? Напишите краткую оду проекту",
   "В каком районе Москвы будет расположен первый проект компании",
   "Какой слоган у компании",
@@ -27,7 +27,7 @@ const QUESTIONS = [
 ];
 
 const TOTAL_SECONDS = 50 * 60;
-const MAX_LENGTH = 144;
+const MAX_LENGTH = 280;
 
 const welcomeSection = document.getElementById("welcome");
 const surveySection = document.getElementById("survey");
@@ -177,5 +177,6 @@ finishBtn.addEventListener("click", () => finishSurvey("manual"));
 nameInput.addEventListener("input", () => {
   startBtn.disabled = !nameInput.value.trim();
 });
+
 
 
