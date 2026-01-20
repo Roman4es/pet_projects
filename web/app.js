@@ -171,5 +171,9 @@ function startSurvey() {
 }
 
 renderQuestions();
+startBtn.disabled = !nameInput.value.trim();
 startBtn.addEventListener("click", startSurvey);
 finishBtn.addEventListener("click", () => finishSurvey("manual"));
+nameInput.addEventListener("input", () => {
+  startBtn.disabled = !nameInput.value.trim();
+});
