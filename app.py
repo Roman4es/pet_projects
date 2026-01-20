@@ -4,11 +4,14 @@ from datetime import datetime
 from io import BytesIO
 import sqlite3
 
-from fastapi import FastAPI, HTTPException
+import os
+
+from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.responses import FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from openpyxl import Workbook
 from pydantic import BaseModel, Field
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -16,6 +19,10 @@ WEB_DIR = BASE_DIR / "web"
 DB_PATH = BASE_DIR / "survey.db"
 
 app = FastAPI(title="Company Survey")
+security = HTTPBasic()
+
+ADMIN_USER = os.getenv("SURVEY_ADMIN_USER", "admin")
+ADMIN_PASS = os.getenv("SURVEY_ADMIN_PASS", "admin123")
 
 
 def init_db() -> None:
@@ -54,6 +61,17 @@ def get_conn() -> sqlite3.Connection:
     return sqlite3.connect(DB_PATH)
 
 
+def require_admin(credentials: HTTPBasicCredentials = Depends(security)) -> None:
+    is_user_ok = credentials.username == ADMIN_USER
+    is_pass_ok = credentials.password == ADMIN_PASS
+    if not (is_user_ok and is_pass_ok):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Unauthorized",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+
+
 @app.on_event("startup")
 def startup() -> None:
     WEB_DIR.mkdir(parents=True, exist_ok=True)
@@ -84,7 +102,7 @@ def index() -> FileResponse:
 
 
 @app.get("/admin")
-def admin() -> FileResponse:
+def admin(_: None = Depends(require_admin)) -> FileResponse:
     admin_path = WEB_DIR / "admin.html"
     if not admin_path.exists():
         raise HTTPException(status_code=404, detail="admin.html not found")
@@ -92,7 +110,7 @@ def admin() -> FileResponse:
 
 
 @app.get("/api/export")
-def export_results():
+def export_results(_: None = Depends(require_admin)):
     conn = get_conn()
     cursor = conn.cursor()
 
